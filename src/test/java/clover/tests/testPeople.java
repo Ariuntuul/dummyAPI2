@@ -4,12 +4,14 @@ import clover.testBase.ghibliTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static io.restassured.RestAssured.given;
 
 public class testPeople extends ghibliTestBase {
 
+    @DisplayName("GET request to https://ghibliapi.herokuapp.com/people")
     @Test
     public void test01_printAllPeople(){
 
@@ -29,6 +31,7 @@ public class testPeople extends ghibliTestBase {
 
     }
 
+    @DisplayName("GET request to https://ghibliapi.herokuapp.com/people/{id} with Path Params")
     @Test
     public void test02_printEachPerson(){
 
@@ -50,6 +53,7 @@ public class testPeople extends ghibliTestBase {
 
     }
 
+    @DisplayName("Total number of People by Name")
     @Test
     public void test03_printListOfPerson(){
 
@@ -64,7 +68,7 @@ public class testPeople extends ghibliTestBase {
 
         //All data are inside the Array, therefore I created a list, then
         List<String> allPeople = response.path("name");
-        System.out.println("Total number of data: " + allPeople.size());
+        System.out.println("Total number of people: " + allPeople.size());
 
         for (int i = 0; i < allPeople.size(); i++){
 
